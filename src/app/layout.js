@@ -1,18 +1,21 @@
+'use client'
 import Navigation from './components/Navigation'
 import './globals.css'
+import { Toaster } from 'react-hot-toast'
 
-export const metadata = {
-  title: 'Luxepass - Premium Experiences',
-  description: 'Your Luxury Portal to Perfectly Tailored Experiences',
-}
+// Remove metadata export as it's not compatible with 'use client'
+// Create a separate metadata.js file if needed
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="bg-black">
+    <html>
+      <body className="bg-black text-white">
         <Navigation />
-        {children}
+        <main>
+          {children}
+        </main>
+        <Toaster position="top-right" />
       </body>
     </html>
-  )
+  );
 }

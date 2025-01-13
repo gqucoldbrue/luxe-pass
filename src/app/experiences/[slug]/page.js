@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
@@ -10,7 +11,7 @@ const experiences = {
   'ferrari-f8-tributo': {
     title: 'Ferrari F8 Tributo',
     category: 'Automotive Couture',
-    description: 'Experience the pinnacle of Ferrari engineering with the F8 Tributo, a car that represents the highest expression of the Prancing Horse's classic two-seater berlinetta.',
+    description: 'Experience the pinnacle of Ferrari engineering with the F8 Tributo, a car that represents the highest expression of the Prancing Horse\'s classic two-seater berlinetta.', // Escaped single quote
     mainImage: '/ferrari-f8-main.jpg',
     galleryImages: [
       '/ferrari-f8-1.jpg',
@@ -42,8 +43,13 @@ const experiences = {
 };
 
 export default function ExperienceDetail() {
+  const router = useRouter();
   const params = useParams();
   const experience = experiences[params.slug];
+  const handleReserveClick = () => {
+    // Assuming experience.id is available
+    router.push(`/reservations?experienceId=${experience.id}`);
+  };
 
   if (!experience) {
     return (
@@ -180,15 +186,15 @@ export default function ExperienceDetail() {
 
         {/* Book Now Button */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mt-16 text-center"
-        >
-          <button className="bg-white text-black px-12 py-4 text-lg hover:bg-gray-100 transition-colors">
-            RESERVE THIS EXPERIENCE
-          </button>
-        </motion.div>
-      </div>
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mt-16 text-center"
+      >
+       <button onClick={handleReserveClick} className="bg-white text-black px-12 py-4 text-lg hover:bg-gray-100 transition-colors">
+  RESERVE THIS EXPERIENCE
+</button>
+</motion.div>
     </div>
+  </div>  // This was missing
   );
 }

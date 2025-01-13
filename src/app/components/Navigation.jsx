@@ -13,6 +13,9 @@ export default function Navigation() {
     { title: 'MEMBERSHIP', href: '/membership' },
     { title: 'CONCIERGE', href: '/concierge' },
     { title: 'ABOUT', href: '/about' },
+    { title: 'RESERVE', href: '/reservations' }, // New menu item
+    { title: 'SIGN IN', href: '/sign-in' }, // New menu item
+    { title: 'SIGN UP', href: '/sign-up' }  // New menu item
   ];
 
   return (
@@ -20,7 +23,7 @@ export default function Navigation() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-light">
+          <Link href="/" className="text-4xl font-light">
             LUXEPASS
           </Link>
 

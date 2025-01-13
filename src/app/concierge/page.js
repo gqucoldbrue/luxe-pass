@@ -1,8 +1,17 @@
 'use client'
+import { useState } from 'react'; // Import useState
 import { motion } from 'framer-motion';
 import { MessageSquare, Calendar, Clock } from 'lucide-react';
 
 export default function Concierge() {
+  const [messageSent, setMessageSent] = useState(false); // State to manage message visibility
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    setMessageSent(true); // Set message sent state to true
+    // Optionally, you can also reset the form fields here if needed
+  };
+
   return (
     <div className="min-h-screen bg-black">
       <div className="container mx-auto px-6 py-24">
@@ -55,7 +64,7 @@ export default function Concierge() {
           <h2 className="text-2xl font-light mb-6 text-center">
             Contact Your Concierge
           </h2>
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Your Name"
@@ -71,10 +80,13 @@ export default function Concierge() {
               rows={4}
               className="w-full bg-black/50 border border-white/10 p-3"
             />
-            <button className="w-full bg-white text-black py-3 hover:bg-gray-100 transition-colors">
+            <button type="submit" className="w-full bg-white text-black py-3 hover:bg-gray-100 transition-colors">
               SEND MESSAGE
             </button>
           </form>
+          {messageSent && ( // Conditionally render the message
+            <p className="mt-4 text-green-500 text-center">Message received!</p>
+          )}
         </div>
       </div>
     </div>

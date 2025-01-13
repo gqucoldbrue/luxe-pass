@@ -1,61 +1,46 @@
 'use client'
 import { motion } from 'framer-motion';
-import { Play } from 'lucide-react';
 import Link from 'next/link';
+import Navigation from '@/app/components/Navigation';
+import SignIn from './sign-in/page';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    
+    <main>
+      <Navigation />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center">
-        {/* Background Video */}
-        <div className="absolute inset-0 overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/50" />
+        {/* Background with gradient overlay */}
+        <div className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
         </div>
 
-        {/* Hero Content */}
+        {/* Content */}
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
             className="max-w-3xl"
           >
-            <h1 className="text-7xl font-light mb-6 gradient-text">
-              Luxepass
+
+            <h1 className="text-5xl font-light mb-6 gradient-text">
+              Automotive Couture
             </h1>
-            <p className="text-2xl text-gray-300 mb-12">
-              Your Luxury Portal to Perfectly Tailored Experiences
+            <p className="text-xl text-gray-300 mb-8">
+              Premium Vehicle Experiences
             </p>
-            <div className="space-x-6">
-              <Link 
-                href="/experiences"
-                className="inline-block bg-white text-black px-8 py-3 hover:bg-gray-100 luxury-transition"
-              >
-                EXPLORE EXPERIENCES
-              </Link>
+            <div className="luxury-blur inline-block p-1">
               <Link 
                 href="/membership"
-                className="inline-block border px-8 py-3 hover:bg-white hover:text-black luxury-transition"
+                className="inline-block px-8 py-4 bg-white text-black hover:bg-gray-100 luxury-transition"
               >
-                LEARN MORE
+                Explore Membership
               </Link>
             </div>
           </motion.div>
         </div>
-
-        {/* Video Play Button */}
-        <button className="absolute bottom-12 right-12 luxury-blur p-4 rounded-full hover:bg-white/10 transition-colors">
-          <Play size={24} />
-        </button>
       </section>
 
       {/* Experience Categories */}
@@ -78,6 +63,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Additional sections... */}
     </main>
   );
 }

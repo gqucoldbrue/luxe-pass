@@ -1,4 +1,4 @@
-import stripe from './stripe';
+import stripe from '@lib/payments/stripe';
 
 export async function handleStripeWebhook(event) {
   switch (event.type) {

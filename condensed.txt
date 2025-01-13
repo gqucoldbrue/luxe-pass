@@ -1,0 +1,280 @@
++---server
+|   |   |   app-paths-manifest.json
+|   |   |   interception-route-rewrite-manifest.js
+|   |   |   middleware-build-manifest.js
+|   |   |   middleware-manifest.json
+|   |   |   middleware-react-loadable-manifest.js
+|   |   |   next-font-manifest.js
+|   |   |   next-font-manifest.json
+|   |   |   pages-manifest.json
+|   |   |   server-reference-manifest.js
+|   |   |   server-reference-manifest.json
+|   |   |   webpack-runtime.js
+
+ +---app
+|   |   |   |   page.js
+|   |   |   |   page_client-reference-manifest.js
+|   |   |   |   
+|   |   |   +---about
+|   |   |   |       page.js
+|   |   |   |       page_client-reference-manifest.js
+
+
++---concierge
+|   |   |   |       page.js
+|   |   |   |       page_client-reference-manifest.js
+|   |   |   |       
+|   |   |   +---experiences
+|   |   |   |       page.js
+|   |   |   |       page_client-reference-manifest.js
+|   |   |   |       
+|   |   |   +---membership
+|   |   |   |       page.js
+|   |   |   |       page_client-reference-manifest.js
+|   |   |   |       
+|   |   |   \---_not-found
+|   |   |           page.js
+|   |   |           page_client-reference-manifest.js
+
+
++---static
+|   |   +---chunks
+|   |   |   |   app-pages-internals.js
+|   |   |   |   main-app.js
+|   |   |   |   polyfills.js
+|   |   |   |   webpack.js
+|   |   |   |   _app-pages-browser_node_modules_next_dist_client_dev_noop-turbopack-hmr_js.js
+|   |   |   |   
+|   |   |   \---app
+|   |   |       |   layout.js
+|   |   |       |   page.js
+|   |   |       |   
+|   |   |       +---about
+|   |   |       |       page.js
+|   |   |       |       
+|   |   |       +---concierge
+|   |   |       |       page.js
+|   |   |       |       
+|   |   |       +---experiences
+|   |   |       |       page.js
+|   |   |       |       
+|   |   |       +---membership
+|   |   |       |       page.js
+|   |   |       |       
+|   |   |       \---_not-found
+|   |   |               page.js
+|   |   |               
+|   |   +---css
+|   |   |   \---app
+|   |   |           layout.css
+|   |   |           
+|   |   +---development
+|   |   |       _buildManifest.js
+|   |   |       _ssgManifest.js
+
+\---types
+|       |   cache-life.d.ts
+|       |   package.json
+|       |   
+|       \---app
+|           |   layout.ts
+|           |   page.ts
+|           |   
+|           +---about
+|           |       page.ts
+|           |       
+|           +---concierge
+|           |       page.ts
+|           |       
+|           +---experiences
+|           |       page.ts
+|           |       
+|           \---membership
+|                   page.ts
+
+
++---conf
+|   |   |   |       config-schema.js
+|   |   |   |       environments.js
+|   |   |   |       
+|   |   |   +---dist
+|   |   |   |       eslintrc-universal.cjs
+|   |   |   |       eslintrc-universal.cjs.map
+|   |   |   |       eslintrc.cjs
+|   |   |   |       eslintrc.cjs.map
+|   |   |   |       
+|   |   |   \---lib
+|   |   |       |   cascading-config-array-factory.js
+|   |   |       |   config-array-factory.js
+|   |   |       |   flat-compat.js
+|   |   |       |   index-universal.js
+|   |   |       |   index.js
+|   |   |       |   
+|   |   |       +---config-array
+|   |   |       |       config-array.js
+|   |   |       |       config-dependency.js
+|   |   |       |       extracted-config.js
+|   |   |       |       ignore-pattern.js
+|   |   |       |       index.js
+|   |   |       |       override-tester.js
+
+
+\---src
+    +---app
+    |   |   favicon.ico
+    |   |   globals.css
+    |   |   layout.js
+    |   |   MemberInterfaces.jsx
+    |   |   page.js
+    |   |   
+    |   +---about
+    |   |       page.js
+    |   |       
+    |   +---account
+    |   |   +---profile
+    |   |   |       page.js
+    |   |   |       
+    |   |   \---settings
+    |   |       |   page.js
+    |   |       |   
+    |   |       \---security
+    |   |               page.js
+    |   |               
+    |   +---admin
+    |   |   +---members
+    |   |   \---payments
+    |   +---api
+    |   |   +---auth
+    |   |   +---bookings
+    |   |   +---join
+    |   |   |       route.js
+    |   |   |       
+    |   |   +---members
+    |   |   +---payments
+    |   |   |   |   route.js
+    |   |   |   |   
+    |   |   |   +---intent
+    |   |   |   |       route.js
+    |   |   |   |       
+    |   |   |   \---webhook
+    |   |   |           route.js
+    |   |   |           
+    |   |   +---verification
+    |   |   \---webhooks
+    |   |       \---stripe
+    |   |               route.js
+    |   |               
+    |   +---components
+    |   |   |   Navigation.jsx
+    |   |   |   
+    |   |   \---payments
+    |   |           PaymentForm.jsx
+    |   |           StripeElements.jsx
+    |   |           
+    |   +---concierge
+    |   |       page.js
+    |   |       
+    |   +---experiences
+    |   |   |   page.js
+    |   |   |   
+    |   |   \---[slug]
+    |   |           page.js
+    |   |           
+    |   +---join
+    |   |   |   page.js
+    |   |   |   
+    |   |   +---financial
+    |   |   |       page.js
+    |   |   |       
+    |   |   +---membership
+    |   |   |       page.js
+    |   |   |       
+    |   |   +---payment
+    |   |   |       page.js
+    |   |   |       
+    |   |   +---personal
+    |   |   |       page.js
+    |   |   |       
+    |   |   \---verification
+    |   |           page.js
+    |   |           
+    |   +---lib
+    |   |   +---auth
+    |   |   +---db
+    |   |   +---stripe
+    |   |   |       client.js
+    |   |   |       utils.js
+    |   |   |       
+    |   |   \---validation
+    |   +---member
+    |   |       page.jsx
+    |   |       
+    |   +---membership
+    |   |   |   page.js
+    |   |   |   
+    |   |   \---[tier]
+    |   |           page.js
+    |   |           
+    |   \---stripe
+    |           client.js
+    |           utils.js
+    |           
+    +---components
+    |   +---dashboard
+    |   +---forms
+    |   |       FinancialCheckForm.jsx
+    |   |       MembershipSelectionForm.jsx
+    |   |       PaymentForm.jsx
+    |   |       PersonalInfoForm.jsx
+    |   |       VerificationForm.jsx
+    |   |       
+    |   +---layout
+    |   +---payments
+    |   |       PaymentForm.jsx
+    |   |       StripeElements.jsx
+    |   |       
+    |   \---ui
+    +---lib
+    |   +---db
+    |   |   |   index.js
+    |   |   |   
+    |   |   +---queries
+    |   |   |   |   admin.js
+    |   |   |   |   dashboard.js
+    |   |   |   |   members.js
+    |   |   |   |   payments.js
+    |   |   |   |   
+    |   |   |   +---admin
+    |   |   |   |       dashboard.js
+    |   |   |   |       reports.js
+    |   |   |   |       
+    |   |   |   +---applications
+    |   |   |   |       status.js
+    |   |   |   |       verification.js
+    |   |   |   |       
+    |   |   |   \---members
+    |   |   |           crud.js
+    |   |   |           payments.js
+    |   |   |           
+    |   |   \---schema
+    |   |           applications.js
+    |   |           members.js
+    |   |           payments.js
+    |   |           
+    |   +---payments
+    |   |       stripe.js
+    |   |       utils.js
+    |   |       webhooks.js
+    |   |       
+    |   +---security
+    |   |       auth.js
+    |   |       encryption.js
+    |   |       validation.js
+    |   |       
+    |   \---stripe
+    |           client.js
+    |           
+    \---utils
+        +---constants
+        +---formatters
+        \---validators
