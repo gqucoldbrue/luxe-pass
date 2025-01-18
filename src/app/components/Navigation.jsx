@@ -4,41 +4,53 @@ import Link from 'next/link';
 import { Menu, X, User, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const navItems = [
+  { name: 'EXPERIENCES', href: '/experiences' },
+  { name: 'MEMBERSHIP', href: '/membership' },
+  { name: 'CONCIERGE', href: '/concierge' },
+  { name: 'ABOUT', href: '/about' },
+  { name: 'RESERVE', href: '/reservations' },
+  { name: 'SIGN IN', href: '/sign-in' }
+];
+
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
 
-  const menuItems = [
-    { title: 'EXPERIENCES', href: '/experiences' },
-    { title: 'MEMBERSHIP', href: '/membership' },
-    { title: 'CONCIERGE', href: '/concierge' },
-    { title: 'ABOUT', href: '/about' },
-    { title: 'RESERVE', href: '/reservations' }, // New menu item
-    { title: 'SIGN IN', href: '/sign-in' }, // New menu item
-    { title: 'SIGN UP', href: '/sign-up' }  // New menu item
-  ];
-
   return (
-    <nav className="fixed w-full z-50 luxury-blur">
+    <motion.nav 
+      className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-zinc-900 to-zinc-800 border-t border-zinc-700/50 backdrop-blur-sm"
+      initial={{ y: 100 }}
+      animate={{ y: 0 }}
+      transition={{ delay: 0.2 }}
+    >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-4xl font-light">
-            LUXEPASS
+          <Link href="/" className="text-2xl font-light">
+            
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <Link
-                key={item.title}
+            {navItems.map((item) => (
+              <motion.a
+                key={item.name}
                 href={item.href}
-                className="hover:text-gray-300 luxury-transition"
+                className="px-4 py-2 text-sm font-medium uppercase tracking-wide hover:text-gray-300 luxury-transition"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+                style={{
+                  background: 'linear-gradient(135deg, #FFFFFF 0%, #A1A1AA 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  textShadow: '0 2px 2px rgba(0,0,0,0.5)'
+                }}
               >
-                {item.title}
-              </Link>
+                {item.name}
+              </motion.a>
             ))}
-            
+
             {/* Account Menu */}
             <div className="relative">
               <button
@@ -92,19 +104,19 @@ export default function Navigation() {
             className="md:hidden luxury-blur"
           >
             <div className="container mx-auto px-6 py-4">
-              {menuItems.map((item) => (
+              {navItems.map((item) => (
                 <Link
-                  key={item.title}
+                  key={item.name}
                   href={item.href}
                   className="block py-2 hover:text-gray-300"
                 >
-                  {item.title}
+                  {item.name}
                 </Link>
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

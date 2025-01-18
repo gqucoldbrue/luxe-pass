@@ -29670,3 +29670,5 @@ Let me know which aspect you'd like to tackle first, and I'll provide the specif
 Must reach out and contact manufacturers to discuss returned fleet vehicles not used; demos as well
 
 
+INSERT INTO cars (model, type, engine, horsepower, torque, transmission, drivetrain, towing_capacity, fuel_economy_city, fuel_economy_highway, interior_features, safety_features, off_road_capability, price)
+VALUES ('2024 Land Rover Defender', 'SUV', '3.0L Turbocharged Inline-6', 395, 406, '8-speed automatic', 'AWD', 8200, 18, 21, '10-inch touchscreen, Apple CarPlay, Android Auto', 'ADAS, Adaptive cruise control, Lane-keeping assist', 'Terrain Response system, Adjustable air suspension', 53000);
