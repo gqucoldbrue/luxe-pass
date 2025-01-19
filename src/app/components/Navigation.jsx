@@ -1,8 +1,10 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, User, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSession, signOut } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
 
 const navItems = [
   { name: 'EXPERIENCES', href: '/experiences' },
@@ -10,12 +12,20 @@ const navItems = [
   { name: 'CONCIERGE', href: '/concierge' },
   { name: 'ABOUT', href: '/about' },
   { name: 'RESERVE', href: '/reservations' },
-  { name: 'SIGN IN', href: '/sign-in' }
 ];
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
+  const { data: session } = useSession();
+  const pathname = usePathname();
+
+  // Sign out user when arriving at home page
+  useEffect(() => {
+    if (pathname === '/') {
+      signOut({ redirect: false });
+    }
+  }, [pathname]);
 
   return (
     <motion.nav 
@@ -26,7 +36,6 @@ export default function Navigation() {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="text-2xl font-light z-50">
             
           </Link>
@@ -77,15 +86,26 @@ export default function Navigation() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute right-0 mt-2 w-48 luxury-blur py-2"
                   >
-                    <Link href="/account/profile" className="block px-4 py-2 hover:bg-white/10">
-                      Profile
-                    </Link>
-                    <Link href="/account/settings" className="block px-4 py-2 hover:bg-white/10">
-                      Settings
-                    </Link>
-                    <button className="block w-full text-left px-4 py-2 hover:bg-white/10">
-                      Sign Out
-                    </button>
+                    {session ? (
+                      <>
+                        <Link href="/account/profile" className="block px-4 py-2 hover:bg-white/10">
+                          Profile
+                        </Link>
+                        <Link href="/account/settings" className="block px-4 py-2 hover:bg-white/10">
+                          Settings
+                        </Link>
+                        <button 
+                          onClick={() => signOut()}
+                          className="block w-full text-left px-4 py-2 hover:bg-white/10"
+                        >
+                          Sign Out
+                        </button>
+                      </>
+                    ) : (
+                      <Link href="/sign-in" className="block px-4 py-2 hover:bg-white/10">
+                        Sign In
+                      </Link>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -121,6 +141,14 @@ export default function Navigation() {
                   {item.name}
                 </Link>
               ))}
+              {!session && (
+                <Link
+                  href="/sign-in"
+                  className="block py-2 hover:text-gray-300"
+                >
+                  SIGN IN
+                </Link>
+              )}
             </div>
           </motion.div>
         )}
