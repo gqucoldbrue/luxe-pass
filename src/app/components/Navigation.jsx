@@ -19,7 +19,7 @@ export default function Navigation() {
 
   return (
     <motion.nav 
-      className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-zinc-900 to-zinc-800 border-t border-zinc-700/50 backdrop-blur-sm"
+      className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-zinc-900 to-zinc-800 border-t border-zinc-700/50 backdrop-blur-sm z-50"
       initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{ delay: 0.2 }}
@@ -27,32 +27,40 @@ export default function Navigation() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-light">
+          <Link href="/" className="text-2xl font-light z-50">
             
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.a
-                key={item.name}
+              <Link 
+                key={item.name} 
                 href={item.href}
-                className="px-4 py-2 text-sm font-medium uppercase tracking-wide hover:text-gray-300 luxury-transition"
-                whileHover={{ y: -2 }}
-                whileTap={{ y: 0 }}
-                style={{
-                  background: 'linear-gradient(135deg, #FFFFFF 0%, #A1A1AA 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  textShadow: '0 2px 2px rgba(0,0,0,0.5)'
-                }}
+                className="relative z-50 block"
               >
-                {item.name}
-              </motion.a>
+                <motion.div
+                  className="px-4 py-2 text-sm font-medium uppercase tracking-wide hover:text-gray-300 cursor-pointer"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ y: 0 }}
+                >
+                  <span
+                    style={{
+                      background: 'linear-gradient(135deg, #FFFFFF 0%, #A1A1AA 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      textShadow: '0 2px 2px rgba(0,0,0,0.5)',
+                      pointerEvents: 'auto'
+                    }}
+                  >
+                    {item.name}
+                  </span>
+                </motion.div>
+              </Link>
             ))}
 
             {/* Account Menu */}
-            <div className="relative">
+            <div className="relative z-50">
               <button
                 onClick={() => setIsAccountOpen(!isAccountOpen)}
                 className="flex items-center space-x-2 hover:text-gray-300 luxury-transition"
@@ -86,7 +94,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
