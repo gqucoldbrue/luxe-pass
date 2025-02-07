@@ -1,0 +1,163 @@
+Error File
+
+Failed to construct transformer:  DuplicateError: Duplicated files or mocks. Please check the console for more info
+    at setModule (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:450:17)
+    at workerReply (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:507:9)
+    at async Promise.all (index 24501)
+    at HasteMap._applyFileDelta (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:672:7)
+    at /workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:327:9
+    at DependencyGraph.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/node-haste/DependencyGraph.js:95:5)
+    at Bundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Bundler.js:69:5)
+    at IncrementalBundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/IncrementalBundler.js:289:5)
+    at Server.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Server.js:1085:5) {
+  mockPath1: 'src/components/package.json',
+  mockPath2: 'temp_backup/src/components/package.json'
+}
+Unrecognized event: {"type":"transformer_load_failed","error":{"mockPath1":"src/components/package.json","mockPath2":"temp_backup/src/components/package.json","name":"Error","message":"Duplicated files or mocks. Please check the console for more info","stack":"Error: Duplicated files or mocks. Please check the console for more info\n    at setModule (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:450:17)\n    at workerReply (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:507:9)\n    at async Promise.all (index 24501)\n    at HasteMap._applyFileDelta (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:672:7)\n    at /workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:327:9\n    at DependencyGraph.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/node-haste/DependencyGraph.js:95:5)\n    at Bundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Bundler.js:69:5)\n    at IncrementalBundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/IncrementalBundler.js:289:5)\n    at Server.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Server.js:1085:5)"}}
+Started Metro Bundler
+Unable to resolve asset "./assets/splash.png" from "splash.image" in your app.json or app.config.js
+Error: Problem validating asset fields in app.json. Learn more.
+ • Field: Android.adaptiveIcon.foregroundImage - cannot access file at './assets/adaptive-icon.png'.
+ • Field: Splash.image - cannot access file at './assets/splash.png'.
+ • Field: splash.image - cannot access file at './assets/splash.png'.
+ • Field: android.adaptiveIcon.foregroundImage - cannot access file at './assets/adaptive-icon.png'.
+ • Field: icon - image should be square, but the file at './assets/icon.png' has dimensions 876x799.
+
+/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:450
+          throw new DuplicateError(
+                ^
+Error: Duplicated files or mocks. Please check the console for more info
+    at setModule (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:450:17)
+    at workerReply (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:507:9)
+    at async Promise.all (index 24501)
+    at HasteMap._applyFileDelta (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:672:7)
+    at /workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:327:9
+    at DependencyGraph.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/node-haste/DependencyGraph.js:95:5)
+    at Bundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Bundler.js:69:5)
+    at IncrementalBundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/IncrementalBundler.js:289:5)
+    at Server.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Server.js:1085:5)
+
+    Warnings:
+
+    Error: Problem validating asset fields in /workspaces/luxe-pass/mobile-app/app.json. Learn more: https://docs.expo.dev/
+ • Field: Android.adaptiveIcon.foregroundImage - cannot access file at './assets/adaptive-icon.png'.
+ • Field: Splash.image - cannot access file at './assets/splash.png'.
+ • Field: icon - image should be square, but the file at './assets/icon.png' has dimensions 876x799.
+
+This project is using an SDK version that by default targets Android API level 33 or lower. To submit your app to the Google Play Store after August 31 2024, you must target Android API level 34 or higher.
+Advice: Upgrade to Expo SDK 50 or later, which by default supports Android API level 34 Learn more: https://support.google.com/googleplay/android-developer/answer/11926878?hl=en
+
+Some dependencies are incompatible with the installed expo version:
+  @react-native-async-storage/async-storage@2.1.1 - expected version: 1.18.2
+  expo-font@13.0.3 - expected version: ~11.4.0
+  expo-linear-gradient@14.0.2 - expected version: ~12.3.0
+  react-native@0.72.6 - expected version: 0.72.10
+  react-native-gesture-handler@2.22.1 - expected version: ~2.12.0
+  react-native-reanimated@3.16.7 - expected version: ~3.3.0
+
+  Error: Problem validating asset fields in /workspaces/luxe-pass/mobile-app/app.json. Learn more: https://docs.expo.dev/
+ • Field: Android.adaptiveIcon.foregroundImage - cannot access file at './assets/adaptive-icon.png'.
+ • Field: Splash.image - cannot access file at './assets/splash.png'.
+ • Field: icon - image should be square, but the file at './assets/icon.png' has dimensions 876x799.
+
+This project is using an SDK version that by default targets Android API level 33 or lower. To submit your app to the Google Play Store after August 31 2024, you must target Android API level 34 or higher.
+Advice: Upgrade to Expo SDK 50 or later, which by default supports Android API level 34 Learn more: https://support.google.com/googleplay/android-developer/answer/11926878?hl=en
+
+Some dependencies are incompatible with the installed expo version:
+  @react-native-async-storage/async-storage@2.1.1 - expected version: 1.18.2
+  expo-font@13.0.3 - expected version: ~11.4.0
+  expo-linear-gradient@14.0.2 - expected version: ~12.3.0
+  react-native@0.72.6 - expected version: 0.72.10
+  react-native-gesture-handler@2.22.1 - expected version: ~2.12.0
+  react-native-reanimated@3.16.7 - expected version: ~3.3.0
+Your project may not work correctly until you install the correct versions of the packages.
+Fix with: npx expo install --fix
+Found outdated dependencies
+Advice: Use 'npx expo install --check' to review and upgrade your dependencies.
+
+Updates and installations
+
+env: load .env
+env: export DATABASE_URL
+Some dependencies are incompatible with the installed expo version:
+  @react-native-async-storage/async-storage@2.1.1 - expected version: 1.18.2
+  expo-font@13.0.3 - expected version: ~11.4.0
+  expo-linear-gradient@14.0.2 - expected version: ~12.3.0
+  react-native@0.72.6 - expected version: 0.72.10
+  react-native-gesture-handler@2.22.1 - expected version: ~2.12.0
+  react-native-reanimated@3.16.7 - expected version: ~3.3.0
+Your project may not work correctly until you install the correct versions of the packages.
+Fix with: npx expo install --fix
+› Installing 6 SDK 49.0.0 compatible native modules using yarn
+> yarn add @react-native-async-storage/async-storage@1.18.2 expo-font@~11.4.0 expo-linear-gradient@~12.3.0 react-native@0.72.10 react-native-gesture-handler@~2.12.0 react-native-reanimated@~3.3.0
+yarn add v1.22.22
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning "react-native > @react-native/codegen@0.72.8" has unmet peer dependency "@babel/preset-env@^7.1.6".
+warning "react-native > @react-native/codegen > jscodeshift@0.14.0" has unmet peer dependency "@babel/preset-env@^7.1.6".
+warning " > react-native-reanimated@3.3.0" has unmet peer dependency "@babel/plugin-proposal-nullish-coalescing-operator@^7.0.0-0".
+warning " > react-native-reanimated@3.3.0" has unmet peer dependency "@babel/plugin-proposal-optional-chaining@^7.0.0-0".
+warning " > react-native-reanimated@3.3.0" has unmet peer dependency "@babel/plugin-transform-arrow-functions@^7.0.0-0".
+warning " > react-native-reanimated@3.3.0" has unmet peer dependency "@babel/plugin-transform-shorthand-properties@^7.0.0-0".
+warning " > react-native-reanimated@3.3.0" has unmet peer dependency "@babel/plugin-transform-template-literals@^7.0.0-0".
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 15 new dependencies.
+info Direct dependencies
+├─ @react-native-async-storage/async-storage@1.18.2
+├─ expo-linear-gradient@12.3.0
+├─ react-native-gesture-handler@2.12.1
+├─ react-native-reanimated@3.3.0
+└─ react-native@0.72.10
+info All dependencies
+├─ @babel/plugin-transform-object-assign@7.25.9
+├─ @react-native-async-storage/async-storage@1.18.2
+├─ @react-native-community/cli-clean@11.3.10
+├─ @react-native-community/cli-doctor@11.3.10
+├─ @react-native-community/cli-hermes@11.3.10
+├─ @react-native-community/cli-plugin-metro@11.3.10
+├─ @react-native-community/cli-types@11.3.10
+├─ @react-native-community/cli@11.3.10
+├─ @react-native/codegen@0.72.8
+├─ deprecated-react-native-prop-types@4.2.3
+├─ expo-linear-gradient@12.3.0
+├─ prop-types@15.8.1
+├─ react-native-gesture-handler@2.12.1
+├─ react-native-reanimated@3.3.0
+└─ react-native@0.72.10
+Done in 14.08s.
+
+Logs for your project will appear below. Press Ctrl+C to exit.
+metro-file-map: Haste module naming collision: luxepass-mobile
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/src/components/package.json
+    * <rootDir>/temp_backup/src/components/package.json
+
+metro-file-map: Haste module naming collision: luxepass
+  The following files share their name; please adjust your hasteImpl:
+    * <rootDir>/temp_backup/package.json
+    * <rootDir>/package.json
+
+Failed to construct transformer:  DuplicateError: Duplicated files or mocks. Please check the console for more info
+    at setModule (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:450:17)
+    at workerReply (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:507:9)
+    at async Promise.all (index 23917)
+    at HasteMap._applyFileDelta (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:672:7)
+    at /workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:327:9
+    at DependencyGraph.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/node-haste/DependencyGraph.js:95:5)
+    at Bundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Bundler.js:69:5)
+    at IncrementalBundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/IncrementalBundler.js:289:5)
+    at Server.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Server.js:1085:5) {
+  mockPath1: 'src/components/package.json',
+  mockPath2: 'temp_backup/src/components/package.json'
+}
+Unrecognized event: {"type":"transformer_load_failed","error":{"mockPath1":"src/components/package.json","mockPath2":"temp_backup/src/components/package.json","name":"Error","message":"Duplicated files or mocks. Please check the console for more info","stack":"Error: Duplicated files or mocks. Please check the console for more info\n    at setModule (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:450:17)\n    at workerReply (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:507:9)\n    at async Promise.all (index 23917)\n    at HasteMap._applyFileDelta (/workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:672:7)\n    at /workspaces/luxe-pass/mobile-app/node_modules/metro-file-map/src/index.js:327:9\n    at DependencyGraph.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/node-haste/DependencyGraph.js:95:5)\n    at Bundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Bundler.js:69:5)\n    at IncrementalBundler.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/IncrementalBundler.js:289:5)\n    at Server.ready (/workspaces/luxe-pass/mobile-app/node_modules/metro/src/Server.js:1085:5)"}}
+Started Metro Bundler
+Unable to resolve asset "./assets/splash.png" from "splash.image" in your app.json or app.config.js
+Error: Problem validating asset fields in app.json. Learn more.
+ • Field: Android.adaptiveIcon.foregroundImage - cannot access file at './assets/adaptive-icon.png'.
+ • Field: Splash.image - cannot access file at './assets/splash.png'.
+ • Field: splash.image - cannot access file at './assets/splash.png'.
+ • Field: android.adaptiveIcon.foregroundImage - cannot access file at './assets/adaptive-icon.png'.
+ • Field: icon - image should be square, but the file at './assets/icon.png' has dimensions 876x799.

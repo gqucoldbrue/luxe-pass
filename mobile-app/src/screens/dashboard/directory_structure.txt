@@ -1,0 +1,199 @@
+mobile-app/src/screens/auth
+.:
+SignInScreen.tsx
+SignUpScreen.tsx
+auth_
+directory_structure.txt
+
+mobile-app/src/screens/dashboard
+.:
+BookingScreen.tsx
+HomeScreen.tsx
+Profile.tsx
+VehicleDetailsScreen.tsx
+VehicleListScreen.tsx
+directory_structure.txt
+
+mobile-app/src/screens//services
+.:
+auth.ts
+booking.ts
+directory_structure.txt
+supabase.ts
+
+
+app_source.txt
+import React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { RootNavigator } from './navigation/RootNavigator';  // Updated path
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1A1A1A' }}>
+        <Text style={{ color: 'white' }}>Testing Render</Text>
+        <RootNavigator />
+      </View>
+    </NavigationContainer>
+  );
+}
+
+appconfig_source.txt
+export default {
+    name: 'luxepass',
+    slug: 'luxepass',
+    version: '1.0.0',
+    orientation: 'portrait',
+    userInterfaceStyle: 'light',
+    splash: {
+      backgroundColor: '#000000'
+    },
+    assetBundlePatterns: [
+      "**/*"
+    ],
+    ios: {
+      supportsTablet: true
+    },
+    android: {
+      adaptiveIcon: {
+        backgroundColor: '#000000'
+      }
+    },
+    web: {}
+  };
+
+homescreen_source.txt
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from '../screens/dashboard/HomeScreen';
+import VehicleList from '../screens/dashboard/VehicleList'; // Ensure these imports are correct
+import Profile from '../screens/dashboard/Profile'; // Ensure these imports are correct
+
+const Stack = createStackNavigator();
+
+export default function RootNavigator() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#000',
+          borderBottomWidth: 0,
+        },
+        headerTintColor: '#fff',
+        cardStyle: { backgroundColor: '#000' }
+      }}
+    >
+      <Stack.Screen 
+        name="Home" 
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen 
+        name="VehicleList" 
+        component={VehicleList}
+        options={{ title: 'Explore Vehicles' }}
+      />
+      <Stack.Screen 
+        name="Profile" 
+        component={Profile}
+        options={{ title: 'Member Access' }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+navigator_source.txt
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from '../screens/dashboard/HomeScreen';
+import VehicleList from '../screens/dashboard/VehicleList'; // Ensure these imports are correct
+import Profile from '../screens/dashboard/Profile'; // Ensure these imports are correct
+
+const Stack = createStackNavigator();
+
+export default function RootNavigator() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#000',
+          borderBottomWidth: 0,
+        },
+        headerTintColor: '#fff',
+        cardStyle: { backgroundColor: '#000' }
+      }}
+    >
+      <Stack.Screen 
+        name="Home" 
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen 
+        name="VehicleList" 
+        component={VehicleList}
+        options={{ title: 'Explore Vehicles' }}
+      />
+      <Stack.Screen 
+        name="Profile" 
+        component={Profile}
+        options={{ title: 'Member Access' }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+package_source.txt
+{
+  "name": "luxepass",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "clean": "yarn cache clean && expo start -c"
+  },
+  "dependencies": {
+    "@expo-google-fonts/inter": "^0.2.3",
+    "@expo-google-fonts/montserrat": "^0.2.3",
+    "@expo/webpack-config": "^19.0.0",
+    "@react-native-async-storage/async-storage": "^2.1.0",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/stack": "^6.3.20",
+    "@supabase/supabase-js": "^2.48.1",
+    "expo": "~49.0.15",
+    "expo-font": "^13.0.3",
+    "expo-linear-gradient": "^14.0.2",
+    "expo-status-bar": "~1.6.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.72.6",
+    "react-native-gesture-handler": "^2.22.1",
+    "react-native-reanimated": "^3.16.7",
+    "react-native-safe-area-context": "4.6.3",
+    "react-native-screens": "~3.22.0",
+    "react-native-web": "~0.19.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "~18.2.14",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "typescript": "^5.1.3"
+  },
+  "private": true
+}
+
+tsconfig_source.txt
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+

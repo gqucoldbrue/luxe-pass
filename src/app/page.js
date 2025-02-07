@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Navigation from '@/app/components/Navigation';
+import Navigation from '@/app/components/Navigation'; // Adjust the path as necessary
 import SignIn from './sign-in/page';
 
 export default function Home() {

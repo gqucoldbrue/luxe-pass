@@ -1,45 +1,37 @@
-// src/navigation/RootNavigator.tsx
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { DashboardScreen } from '../screens/dashboard/DashboardScreen';
-import { RequestDetailsScreen } from '../screens/dashboard/RequestDetailsScreen';
+import HomeScreen from '../screens/dashboard/HomeScreen';
+import VehicleList from '../screens/dashboard/VehicleList'; // Ensure these imports are correct
+import Profile from '../screens/dashboard/Profile'; // Ensure these imports are correct
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator();
 
 export default function RootNavigator() {
   return (
-    <Stack.Navigator 
-      initialRouteName="Dashboard"
+    <Stack.Navigator
       screenOptions={{
-        // These options create a luxury app feel with subtle animations
         headerStyle: {
-          backgroundColor: '#1a1a1a',
+          backgroundColor: '#000',
+          borderBottomWidth: 0,
         },
         headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: '600',
-        },
-        // Smooth card transitions for a premium feel
-        cardStyleInterpolator: ({ current }) => ({
-          cardStyle: {
-            opacity: current.progress,
-          },
-        }),
+        cardStyle: { backgroundColor: '#000' }
       }}
     >
       <Stack.Screen 
-        name="Dashboard" 
-        component={DashboardScreen}
-        options={{
-          title: 'LuxePass Dashboard',
-        }} 
+        name="Home" 
+        component={HomeScreen}
+        options={{ headerShown: false }}
       />
       <Stack.Screen 
-        name="RequestDetails" 
-        component={RequestDetailsScreen}
-        options={{
-          title: 'Request Details',
-        }} 
+        name="VehicleList" 
+        component={VehicleList}
+        options={{ title: 'Explore Vehicles' }}
+      />
+      <Stack.Screen 
+        name="Profile" 
+        component={Profile}
+        options={{ title: 'Member Access' }}
       />
     </Stack.Navigator>
   );

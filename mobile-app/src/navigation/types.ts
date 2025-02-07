@@ -1,8 +1,16 @@
 // src/navigation/types.ts
-// This defines our navigation structure in TypeScript
 export type RootStackParamList = {
-    Dashboard: undefined;
-    RequestDetails: { requestId: string };
-    Profile: undefined;
-    Settings: undefined;
+  Home: undefined;
+  SignIn: undefined;
+  SignUp: undefined;
+  VehicleList: undefined;
+  VehicleDetails: {
+    vehicleId: string;
   };
+  Booking: {
+    vehicleId: string;
+  };
+  RequestDetails: {
+    requestId: string;
+  };
+};
