@@ -161,3 +161,20 @@ Error: Problem validating asset fields in app.json. Learn more.
  • Field: splash.image - cannot access file at './assets/splash.png'.
  • Field: android.adaptiveIcon.foregroundImage - cannot access file at './assets/adaptive-icon.png'.
  • Field: icon - image should be square, but the file at './assets/icon.png' has dimensions 876x799.
+
+The following packages were not updated. You should check the READMEs for those repositories to determine what version is compatible with your new set of packages:
+@expo-google-fonts/inter, @expo-google-fonts/montserrat, @expo/webpack-config, @react-navigation/native, @react-navigation/stack, @supabase/supabase-js, babel-plugin-module-resolver
+
+✖ Failed to clear packager cache with error: Cannot find module 'react-native/local-cli/cli.js'
+
+Unable to resolve asset "./assets/adaptive-icon.png" from "android.adaptiveIcon.foregroundImage" in your app.json or app.config.js
+
+Uncaught Error: Cannot find module '../../App'
+    at webpackMissingModule (bundle.js:13:50)
+    at ./node_modules/expo/AppEntry.js (bundle.js:13:134)
+    at __webpack_require__ (bootstrap:22:1)
+    at startup:6:1
+    at startup:6:1
+WebSocketClient.js:13 WebSocket connection to 'wss://legendary-space-meme-jj49779pp9w5hq467-19006.app.github.dev:19006/_expo/ws' failed: Error in connection establishment: net::ERR_CONNECTION_TIMED_OUT
+WebSocketClient @ WebSocketClient.js:13
+WebSocketClient.js:13 WebSocket connection to 'wss://legendary-space-meme-jj49779pp9w5hq467-19006.app.github.dev:19006/_expo/ws' failed: Error in connection establishment: net::ERR_CONNECTION_TIMED_OUT
