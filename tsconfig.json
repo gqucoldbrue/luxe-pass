@@ -1,21 +1,16 @@
 {
   "compilerOptions": {
-    "strict": false,
-    "incremental": true,
-    "module": "esnext",
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    // ... other options
+    "jsx": "react-native",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "baseUrl": ".", // Add this line if it's missing
+    "paths": {
+      "*": ["./src/*"] // Add this line to help resolve modules
+    }
   },
-  "extends": "expo/tsconfig.base",
-  "include": [
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx"
-, "mobile-app/index.js"  ]
+  "exclude": ["node_modules"],
+  "include": ["src/**/*", "App.tsx"] // <---  Include your source files, and App.tsx
 }
