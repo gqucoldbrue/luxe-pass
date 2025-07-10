@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { supabase } from '@/lib/supabase'; // Ensure this path is correct
+// import { useRouter } from 'next/navigation'; // Optional for redirect
 
 export default function Profile() {
   const [profile, setProfile] = useState({
@@ -10,8 +11,10 @@ export default function Profile() {
     email: '',
     phone: ''
   });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // for form submit
+  const [isFetching, setIsFetching] = useState(true); // for initial load
   const [user, setUser] = useState(null);
+  // const router = useRouter(); // Optional if you want redirect
 
   useEffect(() => {
     getProfile();
@@ -19,22 +22,30 @@ export default function Profile() {
 
   async function getProfile() {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
+      setIsFetching(true);
+
+      const {
+        data: { user },
+        error: userError,
+      } = await supabase.auth.getUser();
+
+      if (userError || !user) throw userError || new Error('No user found');
+
       setUser(user);
 
-      if (user) {
-        const { data, error } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', user.id)
-          .single();
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
 
-        if (error) throw error;
-        if (data) setProfile(data);
-      }
+      if (error) throw error;
+      if (data) setProfile(data);
     } catch (error) {
       toast.error('Error loading profile');
       console.error('Error loading profile:', error);
+    } finally {
+      setIsFetching(false);
     }
   }
 
@@ -63,6 +74,9 @@ export default function Profile() {
 
       if (error) throw error;
       toast.success('Profile updated successfully');
+
+      // Optional: redirect
+      // router.push('/dashboard');
     } catch (error) {
       toast.error('Error updating profile');
       console.error('Error updating profile:', error);
@@ -80,55 +94,59 @@ export default function Profile() {
           className="max-w-2xl mx-auto luxury-blur p-8"
         >
           <h1 className="text-3xl font-light mb-8">Profile</h1>
-          
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">
-                Full Name
-              </label>
-              <input
-                type="text"
-                name="full_name"
-                className="w-full bg-black/50 border border-white/10 p-3"
-                value={profile.full_name || ''}
-                onChange={handleChange}
-              />
-            </div>
 
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                className="w-full bg-black/50 border border-white/10 p-3"
-                value={profile.email || ''}
-                onChange={handleChange}
-              />
-            </div>
+          {isFetching ? (
+            <p className="text-gray-400">Loading profile...</p>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="block text-sm text-gray-400 mb-2">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  name="full_name"
+                  className="w-full bg-black/50 border border-white/10 p-3"
+                  value={profile.full_name || ''}
+                  onChange={handleChange}
+                />
+              </div>
 
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">
-                Phone
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                className="w-full bg-black/50 border border-white/10 p-3"
-                value={profile.phone || ''}
-                onChange={handleChange}
-              />
-            </div>
+              <div>
+                <label className="block text-sm text-gray-400 mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  className="w-full bg-black/50 border border-white/10 p-3"
+                  value={profile.email || ''}
+                  onChange={handleChange}
+                />
+              </div>
 
-            <button 
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-white text-black py-3 hover:bg-gray-100 transition-colors disabled:opacity-50"
-            >
-              {isLoading ? 'SAVING...' : 'SAVE CHANGES'}
-            </button>
-          </form>
+              <div>
+                <label className="block text-sm text-gray-400 mb-2">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  className="w-full bg-black/50 border border-white/10 p-3"
+                  value={profile.phone || ''}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <button 
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-white text-black py-3 hover:bg-gray-100 transition-colors disabled:opacity-50"
+              >
+                {isLoading ? 'SAVING...' : 'SAVE CHANGES'}
+              </button>
+            </form>
+          )}
         </motion.div>
       </div>
     </div>
