@@ -1,8 +1,21 @@
 'use client'
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export default function Settings() {
+  const [notifications, setNotifications] = useState({
+    email: false,
+    sms: false
+  });
+
+  const handleToggle = (type) => {
+    setNotifications(prev => ({
+      ...prev,
+      [type]: !prev[type]
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-black pt-24">
       <div className="container mx-auto px-6 py-12">
@@ -30,11 +43,21 @@ export default function Settings() {
               </p>
               <div className="space-y-4">
                 <label className="flex items-center space-x-3">
-                  <input type="checkbox" className="form-checkbox" />
+                  <input 
+                    type="checkbox" 
+                    className="form-checkbox" 
+                    checked={notifications.email}
+                    onChange={() => handleToggle('email')}
+                  />
                   <span>Email notifications</span>
                 </label>
                 <label className="flex items-center space-x-3">
-                  <input type="checkbox" className="form-checkbox" />
+                  <input 
+                    type="checkbox" 
+                    className="form-checkbox" 
+                    checked={notifications.sms}
+                    onChange={() => handleToggle('sms')}
+                  />
                   <span>SMS notifications</span>
                 </label>
               </div>
