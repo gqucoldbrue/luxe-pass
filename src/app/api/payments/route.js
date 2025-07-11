@@ -1,10 +1,12 @@
-// src/app/api/payments/route.js
 import { NextResponse } from 'next/server';
 import { createPaymentIntent } from '@/utils/payment';
 
+// ✅ Tell Next.js how to run this API route (formerly `export const config`)
+export const runtime = 'nodejs';
+
 export async function POST(request) {
   try {
-    const { amount, currency } = await request.json(); // ✅ App Router uses request.json()
+    const { amount, currency } = await request.json();
 
     const paymentIntent = await createPaymentIntent(amount, currency);
 
