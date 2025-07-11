@@ -1,46 +1,31 @@
-// src/app/api/payments/webhook/route.js
 import { NextResponse } from 'next/server';
-import { buffer } from 'micro';
-import { verifySignature } from '@/utils/payment'; // Utility function to verify webhook signature
+import { buffer } from 'micro'; // Only if needed -- might be required for Stripe
+import { stripe } from '@/utils/stripe'; // Your Stripe instance
 
-export const config = {
-  api: {
-    bodyParser: false, // Disable body parsing to handle raw body
-  },
-};
+export const runtime = 'nodejs'; // ✅ Replaces deprecated config export
 
-export default async function handler(req) {
-  if (req.method === 'POST') {
-    const rawBody = await buffer(req);
-    const signature = req.headers['stripe-signature']; // Adjust based on your payment processor
+export async function POST(request) {
+  const rawBody = await request.text(); // or buffer if Stripe needs it raw
+  const signature = request.headers.get('stripe-signature');
 
-    try {
-      // Verify the webhook signature
-      const event = verifySignature(rawBody, signature);
+  let event;
 
-      // Handle the event based on its type
-      switch (event.type) {
-        case 'payment_intent.succeeded':
-          // Handle successful payment
-          console.log('PaymentIntent was successful!');
-          // Implement your logic to update the database or notify the user
-          break;
-        case 'payment_intent.payment_failed':
-          // Handle failed payment
-          console.log('PaymentIntent failed.');
-          // Implement your logic to notify the user
-          break;
-        // Add more cases for other event types as needed
-        default:
-          console.log(`Unhandled event type: ${event.type}`);
-      }
+  try {
+    event = stripe.webhooks.constructEvent(
+      rawBody,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET
+    );
 
-      return NextResponse.json({ received: true });
-    } catch (error) {
-      console.error('Webhook error:', error);
-      return NextResponse.json({ error: 'Webhook error' }, { status: 400 });
+    // Handle the event
+    if (event.type === 'payment_intent.succeeded') {
+      const paymentIntent = event.data.object;
+      console.log('Payment succeeded:', paymentIntent.id);
     }
-  } else {
-    return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
+
+    return NextResponse.json({ received: true });
+  } catch (err) {
+    console.error('Webhook error:', err.message);
+    return NextResponse.json({ error: 'Webhook error' }, { status: 400 });
   }
 }
