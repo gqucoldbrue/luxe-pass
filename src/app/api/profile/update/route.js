@@ -1,24 +1,19 @@
+// File: src/app/api/profile/update/route.js
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/lib/auth/middleware';
+import { supabase } from '@/lib/supabaseClient';
 import { db } from '@/lib/db';
 
-export async function PUT(req) {
+export async function POST(req) {
   try {
-    // Check authentication
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
     }
 
     const data = await req.json();
-    
-    // Update profile in database
+
     const updatedProfile = await db.profile.update({
-      where: { userId: session.user.id },
+      where: { userId: user.id },
       data: {
         fullName: data.fullName,
         email: data.email,
