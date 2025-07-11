@@ -1,8 +1,6 @@
-// src/app/api/payments/intent/route.js
 import { NextResponse } from 'next/server';
 import { createPaymentIntent } from '@/utils/payment';
 
-// Optional: use nodejs runtime if needed for compatibility with Stripe
 export const runtime = 'nodejs';
 
 export async function POST(request) {
@@ -13,20 +11,10 @@ export async function POST(request) {
 
     return NextResponse.json({
       success: true,
-      clientSecret: paymentIntent.client_secret,
+      clientSecret: paymentIntent.client_secret
     });
   } catch (error) {
     console.error('Error creating payment intent:', error);
-    return NextResponse.json(
-      { error: 'Failed to create payment intent.' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create payment intent.' }, { status: 500 });
   }
-}
-
-export async function GET() {
-  return NextResponse.json(
-    { error: 'Method not allowed' },
-    { status: 405 }
-  );
 }
