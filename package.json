@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "next clean"
+    "clean": "next clean",
+		"preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
@@ -50,5 +51,10 @@
     "postcss": "^8",
     "prisma": "^6.2.1",
     "tailwindcss": "^3.4.1"
-  }
+  },
+	"resolutions": {
+  "eslint": "^8.56.0"
+}
+	
+	
 }
