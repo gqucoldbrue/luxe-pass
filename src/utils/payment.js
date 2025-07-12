@@ -1,6 +1,5 @@
 // src/utils/payment.js
 import Stripe from '@/libstripe';
-import { validatePaymentDetails, createPaymentIntent } from '@/utils/payment';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // Initialize Stripe with your secret key
 
