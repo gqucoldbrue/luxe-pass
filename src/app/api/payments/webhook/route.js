@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { buffer } from 'micro'; // Only if needed -- might be required for Stripe
-import { stripe } from '@/utils/stripe'; // Your Stripe instance
+import { stripe } from '@/lib/payments/stripe'; // Your Stripe instance
 
 export const runtime = 'nodejs'; // ✅ Replaces deprecated config export
 
