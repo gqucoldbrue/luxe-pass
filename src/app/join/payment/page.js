@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Navigation from '@/app/components/Navigation';
-import SignUpProgress from '@/components/SignUpProgress';
+import SignUpProgress from '@/app/components/SignUpProgress';
 import { validatePaymentDetails } from '@/utils/payment'; // Import the utility function
 
 export default function PaymentPage() {

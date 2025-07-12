@@ -1,6 +1,6 @@
 // components/ui/luxury-calendar.tsx
 import { useState } from 'react';
-import { Calendar as CalendarBase } from "@/components/ui/calendar";
+import { Calendar as CalendarBase } from "@/app/components/ui/calendar";
 import { motion, AnimatePresence } from "framer-motion";
 import { format } from "date-fns";
 

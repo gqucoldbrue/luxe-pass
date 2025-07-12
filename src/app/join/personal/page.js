@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Navigation from '@/app/components/Navigation';
-import SignUpProgress from '@/components/SignUpProgress';
+import SignUpProgress from '@/app/components/SignUpProgress';
 import { validatePhone } from '@/utils/validation';
 import 'react-datepicker/dist/react-datepicker.css';
 

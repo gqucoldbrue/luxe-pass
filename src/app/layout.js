@@ -3,7 +3,7 @@ import Navigation from './components/Navigation'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import { SessionProvider } from 'next-auth/react'; // Import SessionProvider
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/app/components/ui/toaster";
 // Remove metadata export as it's not compatible with 'use client'
 // Create a separate metadata.js file if needed
 

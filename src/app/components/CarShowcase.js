@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
-import { Calendar } from "@/components/ui/calendar";
+import { Calendar } from "@/app/components//ui/calendar";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/supabase';
