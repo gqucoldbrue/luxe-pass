@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Navigation from '@/app/components/Navigation';
-import SignUpProgress from '@/app/components/SignUpProgress';
+import SignUpProgress import SignUpProgress from '../components/SignUpProgress';
 
 export default function VerificationPage() {
   const router = useRouter();
